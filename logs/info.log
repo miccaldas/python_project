@@ -1,0 +1,71 @@
+2021-12-17T20:20:54.603608+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (46744), thread 'MainThread' (139708866656064):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/project_builder.py", line 42, in <module>
+    build.create_folders()
+    │     └ <function Builder.create_folders at 0x7f108062b9a0>
+    └ <__main__.Builder object at 0x7f1080630910>
+
+  File "/home/mic/python/python_project/python_project/project_builder.py", line 29, in create_folders
+    os.mkdir(self.sub_path)
+    │  │     │    └ ('/home/mic/python/python_project/python_project/test_folder', 'test_folder')
+    │  │     └ <__main__.Builder object at 0x7f1080630910>
+    │  └ <built-in function mkdir>
+    └ <module 'os' from '/usr/lib/python3.10/os.py'>
+
+TypeError: mkdir: path should be string, bytes or os.PathLike, not tuple
+2021-12-17T20:21:59.485139+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (46775), thread 'MainThread' (140567084353344):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/project_builder.py", line 42, in <module>
+    build.create_folders()
+    │     └ <function Builder.create_folders at 0x7fd85225f9a0>
+    └ <__main__.Builder object at 0x7fd8520689a0>
+
+  File "/home/mic/python/python_project/python_project/project_builder.py", line 27, in create_folders
+    os.mkdir(self.path)
+    │  │     │    └ '/home/mic/python/python_project/python_project/test_folder'
+    │  │     └ <__main__.Builder object at 0x7fd8520689a0>
+    │  └ <built-in function mkdir>
+    └ <module 'os' from '/usr/lib/python3.10/os.py'>
+
+FileExistsError: [Errno 17] File exists: '/home/mic/python/python_project/python_project/test_folder'
+2021-12-17T20:24:12.896903+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (46905), thread 'MainThread' (140330951026496):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/project_builder.py", line 43, in <module>
+    build.manifest()
+    │     └ <function Builder.manifest at 0x7fa157813d00>
+    └ <__main__.Builder object at 0x7fa15761c9a0>
+
+  File "/home/mic/python/python_project/python_project/project_builder.py", line 35, in manifest
+    manifest = open(f"{self.sub_path}/MANIFEST.in", "w")
+
+AttributeError: 'Builder' object has no attribute 'sub_path'
+2021-12-17T20:24:59.317733+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (46942), thread 'MainThread' (139684537829184):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/project_builder.py", line 43, in <module>
+    build.manifest()
+    │     └ <function Builder.manifest at 0x7f0ad646bc70>
+    └ <__main__.Builder object at 0x7f0ad6274a00>
+
+  File "/home/mic/python/python_project/python_project/project_builder.py", line 36, in manifest
+    manifest.write(f"include {self.folder}/README.md")
+    │        └ <method 'write' of '_io.TextIOWrapper' objects>
+    └ <_io.TextIOWrapper name='/home/mic/python/python_project/python_project/test_folder/test_folder/MANIFEST.in' mode='w' encodin...
+
+AttributeError: 'Builder' object has no attribute 'folder'
+2021-12-17T21:56:38.698039+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (49803), thread 'MainThread' (140052734580544):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/project_builder.py", line 202, in <module>
+    build.git()
+    │     └ <function Builder.git at 0x7f60906515a0>
+    └ <__main__.Builder object at 0x7f609063c910>
+
+  File "/home/mic/python/python_project/python_project/project_builder.py", line 179, in git
+    time(2)
+    └ <module 'time' (built-in)>
+
+TypeError: 'module' object is not callable
