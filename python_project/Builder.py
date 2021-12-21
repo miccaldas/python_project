@@ -50,6 +50,21 @@ class Builder:
         ignore.write("\n")
         ignore.write("*.pyc")
         ignore.write("\n")
+        ignore.write("__pycache__")
+        ignore.write("\n")
+        ignore.write("\n")
+        ignore.write("# Database files.")
+        ignore.write("*.db")
+        ignore.write("\n")
+        ignore.write("*.sql")
+        ignore.write("\n")
+        ignore.write("\n")
+        ignore.write("# Log files and folders")
+        ignore.write("\n")
+        ignore.write("*.log")
+        ignore.write("\n")
+        ignore.write("logs/")
+        ignore.write("\n")
         ignore.write("\n")
         ignore.write("# Setuptools distribution folder.")
         ignore.write("\n")
@@ -167,7 +182,7 @@ class Builder:
     @logger.catch
     def init(self):
         """Empty folder that signifies to python that the
-        folder is parto fo a package."""
+        folder is part of a package."""
         init_file = f"{self.sub_path}/__init__.py"
         init = open(init_file, "w")
         init.write(" ")
@@ -175,34 +190,15 @@ class Builder:
 
     @logger.catch
     def git(self):
-        """Does the first commit of a new git repository."""
+        """Initiates a new git repository."""
         cmd_init = "git init -b master"
         subprocess.run(cmd_init, cwd=self.path, shell=True)
         time.sleep(2)
-        cmd_add = "git add ."
-        subprocess.run(cmd_add, cwd=self.path, shell=True)
-        time.sleep(2)
-        cmd_commit = 'git commit -m "First commit"'
-        subprocess.run(cmd_commit, cwd=self.path, shell=True)
-        time.sleep(2)
         cmd_origin = f"git remote add origin git@notabug.org:micaldas/{self.folder_name}.git"
+        cmd_origin1 = f"git remote add origin_codeberg git@codeberg.org:micaldas/{self.folder_name}.git"
         subprocess.run(cmd_origin, cwd=self.path, shell=True)
-        time.sleep(2)
-        cmd_push = "git push -u origin master"
-        subprocess.run(cmd_push, cwd=self.path, shell=True)
+        subprocess.run(cmd_origin1, cwd=self.path, shell=True)
 
 
 if __name__ == "__main__":
     fire.Fire(Builder)
-
-"""
-build = Builder("teste", "https://notabug.org/micaldas/teste.git")
-build.create_folders()
-build.manifest()
-build.gitignore()
-build.license()
-build.pyproject()
-build.readme()
-build.setup()
-build.init()
-build.git()"""

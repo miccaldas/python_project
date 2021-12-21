@@ -1,11 +1,12 @@
 """Module that'll call the methods defined on 'project_builder.py'."""
+
 import subprocess
 
 import click
 import isort  # noqa: F401
 from loguru import logger
 
-from project_builder import Builder
+from python_project.Builder import Builder
 
 fmt = "{time} - {name} - {level} - {message}"
 logger.add("../logs/info.log", level="INFO", format=fmt, backtrace=True, diagnose=True)  # noqa: E501

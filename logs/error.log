@@ -69,3 +69,125 @@ Traceback (most recent call last):
     └ <module 'time' (built-in)>
 
 TypeError: 'module' object is not callable
+2021-12-18T01:27:24.076517+0000 - __main__ - ERROR - An error has been caught in function 'main', process 'MainProcess' (67097), thread 'MainThread' (139874262787904):
+Traceback (most recent call last):
+
+  File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f3702aecf70>
+
+> File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder.main_helper()
+           │       └ <function Builder.main_helper at 0x7f37029f9090>
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.main_helper() missing 1 required positional argument: 'self'
+2021-12-18T01:27:24.076517+0000 - __main__ - ERROR - An error has been caught in function 'main', process 'MainProcess' (67097), thread 'MainThread' (139874262787904):
+Traceback (most recent call last):
+
+  File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f3702aecf70>
+
+> File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder.main_helper()
+           │       └ <function Builder.main_helper at 0x7f37029f9090>
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.main_helper() missing 1 required positional argument: 'self'
+2021-12-18T01:27:24.084118+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67097), thread 'MainThread' (139874262787904):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f3702aecf70>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 40, in main
+    build = Builder(name)
+            └ <class 'project_builder.Builder'>
+
+UnboundLocalError: local variable 'name' referenced before assignment
+2021-12-18T01:27:24.084118+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67097), thread 'MainThread' (139874262787904):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f3702aecf70>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 40, in main
+    build = Builder(name)
+            └ <class 'project_builder.Builder'>
+
+UnboundLocalError: local variable 'name' referenced before assignment
+2021-12-18T01:29:04.293516+0000 - __main__ - ERROR - An error has been caught in function 'main', process 'MainProcess' (67165), thread 'MainThread' (140235113363264):
+Traceback (most recent call last):
+
+  File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f8b070d1000>
+
+> File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder.main_helper()
+           │       └ <function Builder.main_helper at 0x7f8b06fdd120>
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.main_helper() missing 1 required positional argument: 'self'
+2021-12-18T01:29:04.293516+0000 - __main__ - ERROR - An error has been caught in function 'main', process 'MainProcess' (67165), thread 'MainThread' (140235113363264):
+Traceback (most recent call last):
+
+  File "/home/mic/python/python_project/python_project/main.py", line 53, in <module>
+    main()
+    └ <function main at 0x7f8b070d1000>
+
+> File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder.main_helper()
+           │       └ <function Builder.main_helper at 0x7f8b06fdd120>
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.main_helper() missing 1 required positional argument: 'self'
+2021-12-18T01:32:07.049454+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67233), thread 'MainThread' (140546131765056):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 54, in <module>
+    main()
+    └ <function main at 0x7fd37131d000>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder()
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.__init__() missing 1 required positional argument: 'folder_name'
+2021-12-18T01:32:07.049454+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67233), thread 'MainThread' (140546131765056):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 54, in <module>
+    main()
+    └ <function main at 0x7fd37131d000>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 32, in main
+    path = Builder()
+           └ <class 'project_builder.Builder'>
+
+TypeError: Builder.__init__() missing 1 required positional argument: 'folder_name'
+2021-12-18T01:53:53.723321+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67659), thread 'MainThread' (139826720773952):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 59, in <module>
+    main()
+    └ <function main at 0x7f2bf0f49000>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 35, in main
+    name_file = open(f"{name}/{name}/project_name.txt", "w")
+
+UnboundLocalError: local variable 'name' referenced before assignment
+2021-12-18T01:53:53.723321+0000 - __main__ - ERROR - An error has been caught in function '<module>', process 'MainProcess' (67659), thread 'MainThread' (139826720773952):
+Traceback (most recent call last):
+
+> File "/home/mic/python/python_project/python_project/main.py", line 59, in <module>
+    main()
+    └ <function main at 0x7f2bf0f49000>
+
+  File "/home/mic/python/python_project/python_project/main.py", line 35, in main
+    name_file = open(f"{name}/{name}/project_name.txt", "w")
+
+UnboundLocalError: local variable 'name' referenced before assignment
