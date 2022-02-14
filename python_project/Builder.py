@@ -122,6 +122,15 @@ class Builder:
         pyproject.write("]")
         pyproject.write("\n")
         pyproject.write('build-backend = "setuptools.build_meta"')
+        pyproject.write("\n")
+        pyproject.write("\n")
+        pyproject.write("[tool.black]")
+        pyproject.write("\n")
+        pyproject.write("# I leave these values as a guide. This is useful if you want to have files or folders")
+        pyproject.write("\n")
+        pyproject.write("# that black doesn't format. They must in the form of regexes.")
+        pyproject.write("\n")
+        pyproject.write("extend-exclude = '\.\/support_files\/template_launch\.py', '\.\/support_files\/trans.*\.py'")  # noqa: W605
         pyproject.close()
 
     @logger.catch
@@ -177,6 +186,17 @@ class Builder:
         setup.write("verbose = 2")
         setup.write("\n")
         setup.write("show-source = True")
+        setup.write("\n")
+        setup.write("\n")
+        setup.write("[flake8]")
+        setup.write("\n")
+        setup.write("extend-ignore = E501 F401 F841 W605")
+        setup.write("\n")
+        setup.write("max-line-length = 180")
+        setup.write("\n")
+        setup.write("verbose = 2")
+        setup.write("\n")
+        setup.write("show-source = True")
         setup.close()
 
     @logger.catch
@@ -191,13 +211,23 @@ class Builder:
     @logger.catch
     def git(self):
         """Initiates a new git repository."""
-        cmd_init = "git init -b master"
+        cmd_create = "git init -b master"
+        subprocess.run(cmd_create, cwd=self.path, shell=True)
+        time.sleep(2)
+        cmd_ignore = "git-ignore python"
+        subprocess.run(cmd_ignore, cwd=self.path, shell=True)
+        time.sleep(2)
+        cmd_add = "git add ."
+        subprocess.run(cmd_add, cwd=self.path, shell=True)
+        time.sleep(2)
+        cmd_commit = "git commit -m 'First Commit'"
+        subprocess.run(cmd_commit, cwd=self.path, shell=True)
+        time.sleep(2)
+        cmd_init = "gh auth login --with-token < ~/documentation/github_personal_access_token"
         subprocess.run(cmd_init, cwd=self.path, shell=True)
         time.sleep(2)
-        cmd_origin = f"git remote add origin git@notabug.org:micaldas/{self.folder_name}.git"
-        cmd_origin1 = f"git remote add origin_codeberg git@codeberg.org:micaldas/{self.folder_name}.git"
-        subprocess.run(cmd_origin, cwd=self.path, shell=True)
-        subprocess.run(cmd_origin1, cwd=self.path, shell=True)
+        cmd_repo = f"gh repo create {self.folder_name} --disable-issues --disable-wiki --public --remote=origin_github --source=. --push"
+        subprocess.run(cmd_repo, cwd=self.path, shell=True)
 
 
 if __name__ == "__main__":
