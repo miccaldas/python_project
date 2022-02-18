@@ -44,37 +44,8 @@ class Builder:
     @logger.catch
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
-        ignore_file = f"{self.path}/.gitignore"
-        ignore = open(ignore_file, "w")
-        ignore.write("# Compiled python modules.")
-        ignore.write("\n")
-        ignore.write("*.pyc")
-        ignore.write("\n")
-        ignore.write("__pycache__")
-        ignore.write("\n")
-        ignore.write("\n")
-        ignore.write("# Database files.")
-        ignore.write("*.db")
-        ignore.write("\n")
-        ignore.write("*.sql")
-        ignore.write("\n")
-        ignore.write("\n")
-        ignore.write("# Log files and folders")
-        ignore.write("\n")
-        ignore.write("*.log")
-        ignore.write("\n")
-        ignore.write("logs/")
-        ignore.write("\n")
-        ignore.write("\n")
-        ignore.write("# Setuptools distribution folder.")
-        ignore.write("\n")
-        ignore.write("/dist/")
-        ignore.write("\n")
-        ignore.write("\n")
-        ignore.write("# Python egg metadata, regenerated from source files by setuptools.")
-        ignore.write("\n")
-        ignore.write("/*.egg-info")
-        ignore.close()
+        cmd = "git-ignore python"
+        subprocess.run(cmd, shell=True)
 
     @logger.catch
     def license(self):
@@ -122,15 +93,6 @@ class Builder:
         pyproject.write("]")
         pyproject.write("\n")
         pyproject.write('build-backend = "setuptools.build_meta"')
-        pyproject.write("\n")
-        pyproject.write("\n")
-        pyproject.write("[tool.black]")
-        pyproject.write("\n")
-        pyproject.write("# I leave these values as a guide. This is useful if you want to have files or folders")
-        pyproject.write("\n")
-        pyproject.write("# that black doesn't format. They must in the form of regexes.")
-        pyproject.write("\n")
-        pyproject.write("extend-exclude = '\.\/support_files\/template_launch\.py', '\.\/support_files\/trans.*\.py'")  # noqa: W605
         pyproject.close()
 
     @logger.catch
@@ -178,11 +140,6 @@ class Builder:
         setup.write("\n")
         setup.write("include_package_data = True")
         setup.write("\n")
-        setup.write("\n")
-        setup.write("[flake8]")
-        setup.write("\n")
-        setup.write("extend-ignore = E501")
-        setup.write("\n")
         setup.write("verbose = 2")
         setup.write("\n")
         setup.write("show-source = True")
@@ -213,9 +170,6 @@ class Builder:
         """Initiates a new git repository."""
         cmd_create = "git init -b master"
         subprocess.run(cmd_create, cwd=self.path, shell=True)
-        time.sleep(2)
-        cmd_ignore = "git-ignore python"
-        subprocess.run(cmd_ignore, cwd=self.path, shell=True)
         time.sleep(2)
         cmd_add = "git add ."
         subprocess.run(cmd_add, cwd=self.path, shell=True)
