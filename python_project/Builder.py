@@ -44,7 +44,7 @@ class Builder:
     @logger.catch
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
-        cmd = "git-ignore python"
+        cmd = "git-ignore python > '.gitignore'"
         subprocess.run(cmd, shell=True)
 
     @logger.catch
