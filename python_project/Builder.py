@@ -147,7 +147,7 @@ class Builder:
         setup.write("\n")
         setup.write("[flake8]")
         setup.write("\n")
-        setup.write("extend-ignore = E501 F401 F841 W605")
+        setup.write("extend-ignore = F401 F841 W605 E704, E722, E1, W1, E2, E3, E3, E4, W4, E5, W5, E731")
         setup.write("\n")
         setup.write("max-line-length = 180")
         setup.write("\n")
