@@ -100,7 +100,7 @@ class Builder:
         """Long form presentation of the project."""
         readme_file = f"{self.path}/README.md"
         readme = open(readme_file, "w")
-        readme.write(" ")
+        readme.write("\n[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)")
         readme.close()
 
     @logger.catch
