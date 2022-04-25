@@ -20,7 +20,7 @@ def main():
     """Here we'll ask the user for input to define the value of
     the instance variable and pass it to the Builder class."""
 
-    name = input(click.style("[?] - What is the name of your project? ", fg="white", bold=True))
+    name = input(click.style("[?] - What is the name of your project? ", fg="bright_white", bold=True))
 
     build = Builder(name)
     build.create_folders()
