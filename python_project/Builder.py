@@ -6,11 +6,7 @@ import time
 
 import fire
 import isort  # noqa: F401
-from loguru import logger
-
-fmt = "{time} - {name} - {level} - {message}"
-logger.add("../logs/info.log", level="INFO", format=fmt, backtrace=True, diagnose=True)  # noqa: E501
-logger.add("../logs/error.log", level="ERROR", format=fmt, backtrace=True, diagnose=True)  # noqa: E501
+import snoop
 
 subprocess.run(["isort", __file__])
 
@@ -23,7 +19,7 @@ class Builder:
     def __init__(self, folder_name):
         self.folder_name = folder_name
 
-    @logger.catch
+    @snoop
     def create_folders(self):
         """Creates the primary folders."""
         parent_dir = os.getcwd()
@@ -32,7 +28,7 @@ class Builder:
         self.sub_path = os.path.join(self.path, self.folder_name)
         os.mkdir(self.sub_path)
 
-    @logger.catch
+    @snoop
     def manifest(self):
         """Creates file that itemizes all non-code files needed
         to run the program, and their paths."""
@@ -41,13 +37,13 @@ class Builder:
         manifest.write(f"include {self.folder_name}/README.md")
         manifest.close()
 
-    @logger.catch
+    @snoop
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
-        cmd = "git-ignore python > '.gitignore'"
+        cmd = "git-ignore -u python > '.gitignore'"
         subprocess.run(cmd, shell=True)
 
-    @logger.catch
+    @snoop
     def license(self):
         """The copyright license of the project."""
         license_file = f"{self.path}/LICENSE"
@@ -77,7 +73,7 @@ class Builder:
         )
         license.close()
 
-    @logger.catch
+    @snoop
     def pyproject(self):
         """Document that states that we're using setuptools and pip wheel."""
         pyproject_file = f"{self.path}/pyproject.toml"
@@ -95,7 +91,7 @@ class Builder:
         pyproject.write('build-backend = "setuptools.build_meta"')
         pyproject.close()
 
-    @logger.catch
+    @snoop
     def readme(self):
         """Long form presentation of the project."""
         readme_file = f"{self.path}/README.md"
@@ -103,7 +99,7 @@ class Builder:
         readme.write("\n[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)")
         readme.close()
 
-    @logger.catch
+    @snoop
     def setup(self):
         """Project's metadata."""
         setup_file = f"{self.path}/setup.cfg"
@@ -157,8 +153,6 @@ class Builder:
         setup.write("\n")
         setup.write("    isort")
         setup.write("\n")
-        setup.write("    loguru")
-        setup.write("\n")
         setup.write("    click")
         setup.write("\n")
         setup.write("show_source = True")
@@ -173,9 +167,12 @@ class Builder:
         setup.write("verbose = 2")
         setup.write("\n")
         setup.write("show-source = True")
-        setup.close()
+        setup.close("\n\n")
+        setup.close("[options.entry_points]")
+        setup.close("\n")
+        setup.close("    console_scripts =\n")
 
-    @logger.catch
+    @snoop
     def init(self):
         """Empty folder that signifies to python that the
         folder is part of a package."""
@@ -184,7 +181,7 @@ class Builder:
         init.write(" ")
         init.close()
 
-    @logger.catch
+    @snoop
     def git(self):
         """Initiates a new git repository."""
         cmd_create = "git init -b master"
