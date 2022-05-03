@@ -167,10 +167,10 @@ class Builder:
         setup.write("verbose = 2")
         setup.write("\n")
         setup.write("show-source = True")
-        setup.close("\n\n")
-        setup.close("[options.entry_points]")
-        setup.close("\n")
-        setup.close("    console_scripts =\n")
+        setup.write("\n\n")
+        setup.write("[options.entry_points]")
+        setup.write("\n")
+        setup.write("    console_scripts =\n")
 
     @snoop
     def init(self):
