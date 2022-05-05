@@ -41,7 +41,7 @@ class Builder:
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
         cmd = "git-ignore -u python > '.gitignore'"
-        subprocess.run(cmd, shell=True)
+        subprocess.run(cmd, cwd="{self.path}", shell=True)
 
     @snoop
     def license(self):
