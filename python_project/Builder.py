@@ -89,6 +89,10 @@ class Builder:
         pyproject.write("]")
         pyproject.write("\n")
         pyproject.write('build-backend = "setuptools.build_meta"')
+        pyproject.write("\n\n")
+        pyproject.write("[tool.isort]")
+        pyproject.write("\n")
+        pyproject.write('profile = "black"')
         pyproject.close()
 
     @snoop
