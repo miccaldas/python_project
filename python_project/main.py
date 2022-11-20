@@ -4,6 +4,7 @@ import subprocess
 
 import click
 import isort  # noqa: F401
+import snoop
 from loguru import logger
 
 from python_project.Builder import Builder
@@ -15,7 +16,7 @@ logger.add("../logs/error.log", level="ERROR", format=fmt, backtrace=True, diagn
 subprocess.run(["isort", __file__])
 
 
-@logger.catch
+@snoop
 def main():
     """Here we'll ask the user for input to define the value of
     the instance variable and pass it to the Builder class."""

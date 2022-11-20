@@ -7,6 +7,7 @@ import time
 import fire
 import isort  # noqa: F401
 import snoop
+from snoop import pp
 
 subprocess.run(["isort", __file__])
 
@@ -23,8 +24,9 @@ class Builder:
     def create_folders(self):
         """Creates the primary folders."""
         parent_dir = os.getcwd()
-        self.path = os.path.join(parent_dir, self.folder_name)
-        os.mkdir(self.path)
+        self.path = pp(os.path.join(parent_dir, self.folder_name))
+        print(self.path)
+        pp(os.mkdir(self.path))
         self.sub_path = os.path.join(self.path, self.folder_name)
         os.mkdir(self.sub_path)
 
@@ -41,7 +43,7 @@ class Builder:
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
         cmd = "git-ignore -u python > '.gitignore'"
-        subprocess.run(cmd, cwd="{self.path}", shell=True)
+        subprocess.run(cmd, cwd=self.path, shell=True)
 
     @snoop
     def license(self):
