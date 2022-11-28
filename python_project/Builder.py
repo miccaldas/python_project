@@ -20,7 +20,7 @@ class Builder:
     def __init__(self, folder_name):
         self.folder_name = folder_name
 
-    @snoop
+    # @snoop
     def create_folders(self):
         """Creates the primary folders."""
         parent_dir = os.getcwd()
@@ -30,7 +30,7 @@ class Builder:
         self.sub_path = os.path.join(self.path, self.folder_name)
         os.mkdir(self.sub_path)
 
-    @snoop
+    # @snoop
     def manifest(self):
         """Creates file that itemizes all non-code files needed
         to run the program, and their paths."""
@@ -39,13 +39,13 @@ class Builder:
         manifest.write(f"include {self.folder_name}/README.md")
         manifest.close()
 
-    @snoop
+    # @snoop
     def gitignore(self):
         """Creates file that defines what files Git should ignore."""
         cmd = "git-ignore -u python > '.gitignore'"
         subprocess.run(cmd, cwd=self.path, shell=True)
 
-    @snoop
+    # @snoop
     def license(self):
         """The copyright license of the project."""
         license_file = f"{self.path}/LICENSE"
@@ -75,7 +75,7 @@ class Builder:
         )
         license.close()
 
-    @snoop
+    # @snoop
     def pyproject(self):
         """Document that states that we're using setuptools and pip wheel."""
         pyproject_file = f"{self.path}/pyproject.toml"
@@ -97,7 +97,7 @@ class Builder:
         pyproject.write('profile = "black"')
         pyproject.close()
 
-    @snoop
+    # @snoop
     def readme(self):
         """Long form presentation of the project."""
         readme_file = f"{self.path}/README.md"
@@ -105,7 +105,7 @@ class Builder:
         readme.write("\n[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)")
         readme.close()
 
-    @snoop
+    # @snoop
     def setup(self):
         """Project's metadata."""
         setup_file = f"{self.path}/setup.cfg"
@@ -178,7 +178,7 @@ class Builder:
         setup.write("\n")
         setup.write("    console_scripts =\n")
 
-    @snoop
+    # @snoop
     def init(self):
         """Empty folder that signifies to python that the
         folder is part of a package."""
@@ -187,7 +187,7 @@ class Builder:
         init.write(" ")
         init.close()
 
-    @snoop
+    # @snoop
     def git(self):
         """Initiates a new git repository."""
         cmd_create = "git init -b master"
