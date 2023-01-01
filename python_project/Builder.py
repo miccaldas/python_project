@@ -9,8 +9,6 @@ import isort  # noqa: F401
 import snoop
 from snoop import pp
 
-subprocess.run(["isort", __file__])
-
 
 class Builder:
     """Builds some boilerplate about python packages. The files
@@ -102,7 +100,7 @@ class Builder:
         """Long form presentation of the project."""
         readme_file = f"{self.path}/README.md"
         readme = open(readme_file, "w")
-        readme.write("\n[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)")
+        readme.write("\n\n[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)")
         readme.close()
 
     # @snoop
