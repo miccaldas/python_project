@@ -16,7 +16,7 @@ logger.add("../logs/error.log", level="ERROR", format=fmt, backtrace=True, diagn
 subprocess.run(["isort", __file__])
 
 
-# @snoop
+@snoop
 def main():
     """Here we'll ask the user for input to define the value of
     the instance variable and pass it to the Builder class."""
@@ -32,6 +32,10 @@ def main():
     build.readme()
     build.setup()
     build.init()
+    build.db_calls_explanation()
+    build.dummy_file()
+    build.call_file_creator()
+    build.add_to_path()
     build.git()
 
 
