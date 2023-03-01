@@ -32,6 +32,8 @@ def main():
     build.readme()
     build.setup()
     build.init()
+    build.config()
+    build.partials()
     build.add_to_path()
     build.git()
 

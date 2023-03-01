@@ -27,6 +27,10 @@ class Builder:
         os.mkdir(self.path)
         self.sub_path = os.path.join(self.path, self.folder_name)
         os.mkdir(self.sub_path)
+        self.config_path = os.path.join(self.sub_path, 'configs')
+        os.mkdir(self.config_path)
+        self.partials_path = os.path.join(self.sub_path, 'partials')
+        os.mkdir(self.partials_path)
 
     # @snoop
     def manifest(self):
@@ -157,8 +161,6 @@ class Builder:
         setup.write("\n")
         setup.write("    snoop")
         setup.write("\n")
-        setup.write("    isort")
-        setup.write("\n")
         setup.write("    click")
         setup.write("\n")
         setup.write("show_source = True")
@@ -184,10 +186,24 @@ class Builder:
     def init(self):
         """Empty folder that signifies to python that the
         folder is part of a package."""
-        init_file = f"{self.sub_path}/__init__.py"
-        init = open(init_file, "w")
-        init.write(" ")
-        init.close()
+        init_sub_file = f"{self.sub_path}/__init__.py"
+        init_conf_file = f"{self.config_path}/__init__.py"
+        for ini in [init_sub_file, init_conf_file]:
+            init = open(ini, "w")
+            init.write(" ")
+            init.close()
+
+    # @snoop
+    def config(self):
+        """Folder to house all configuration files"""
+        cmd = f"cp ~/python/reusable_files/reusable_files/configs/* {self.config_path}"
+        subprocess.run(cmd, shell=True)
+
+    # @snoop
+    def partials(self):
+        """Folder to house all code partials"""
+        cmd = f"cp ~/python/reusable_files/reusable_files/partials/* {self.partials_path}"
+        subprocess.run(cmd, shell=True)
 
     # @snoop
     def add_to_path(self):
@@ -208,7 +224,7 @@ class Builder:
         )
         print(f"The results are, {zsh.stdout}")
         subprocess.run("source ~/.zshenv", shell=True)
-        subprocess.run(f"/home/mic/.local/bin/trash-put '{self.sub_path}/python_path.sh'", shell=True)
+        subprocess.run(f"/usr/bin/trash-put '{self.sub_path}/python_path.sh'", shell=True)
 
     # @snoop
     def git(self):
