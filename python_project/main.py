@@ -3,15 +3,11 @@
 import subprocess
 
 import click
-import isort  # noqa: F401
-import snoop
-from loguru import logger
-
 from python_project.Builder import Builder
 
-fmt = "{time} - {name} - {level} - {message}"
-logger.add("../logs/info.log", level="INFO", format=fmt, backtrace=True, diagnose=True)  # noqa: E501
-logger.add("../logs/error.log", level="ERROR", format=fmt, backtrace=True, diagnose=True)  # noqa: E501
+# import snoop
+
+
 
 subprocess.run(["isort", __file__])
 
