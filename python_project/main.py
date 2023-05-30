@@ -3,10 +3,9 @@
 import subprocess
 
 import click
-from python_project.Builder import Builder
+from Builder import Builder
 
 # import snoop
-
 
 
 subprocess.run(["isort", __file__])
