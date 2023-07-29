@@ -31,6 +31,7 @@ def main():
     build.partials()
     build.add_to_path()
     build.git()
+    build.db_template()
 
 
 if __name__ == "__main__":
